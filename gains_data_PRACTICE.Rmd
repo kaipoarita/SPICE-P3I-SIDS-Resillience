@@ -1,0 +1,50 @@
+---
+title: "gains_data_practice_plotting"
+output: html_document
+date: "2023-06-09"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(here)# allows us to cut out long file paths (ex. "users/connor/dowloads/etc")
+library(tidyverse) # allows us to do lots of fundamental data science tasks (ex. read_csv)
+library(ggcorrplot) # allows us to make correlation plots
+library(plotly) # allows us to make ggplot objects interactive
+library(janitor) # allows us to clean the column names of our dataframe
+library(jsonlite) # allows us to read in json files
+library(here) # allows us to cut out long file paths (ex. "users/connor/dowloads/etc")
+library(forcats) # 
+library(tidytext) # allows us to tokenize data 
+library(dplyr) # allows us to manipulate dataframes
+library(stringr) # allows us to count the number of words in a cell
+library(quanteda) # allows us to tokenize data
+library(quanteda.textplots) # allows us to make network plots
+library(gridExtra) # allows us to combine multiple plots into 1
+library(wordcloud) # allows us to generate word clouds
+```
+
+## R Markdown
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+
+```{r}
+gains_data <- read_csv(here("data/nd-gain-data/joined_data/nd-gain-joined.csv"))
+View(gains_data)
+
+gains_data_2020 <- gains_data %>% filter(year == 2020)
+View(gains_data_2020)
+
+```
+
+
+```{r}
+gains_data_2020_wider <- gains_data_2020 %>% 
+  pivot_wider(names_from = indicator,
+              values_from = value)
+
+ggplot(data = gains_data_2020_wider, aes(x = education, y = human_development_index, color = sids_context)) + 
+  geom_point()
+
+```
+
+

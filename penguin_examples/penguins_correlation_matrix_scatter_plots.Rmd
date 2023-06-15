@@ -84,8 +84,16 @@ Now let's look at the relationship between flipper length and body mass with a s
 
 ```{r}
 ggplot(data = penguins_data, aes(x = flipper_length_mm, 
-                                 y = body_mass_g)) +
-         geom_point()
+                                 y = body_mass_g,
+                                 color = species,
+                                 shape = sex
+                                 )) +
+         geom_point() +
+          geom_smooth() +
+          theme_minimal() +
+  labs(title = "Relationship between Body Mass and Flipper Length",
+       x = "Flipper Lengths (mm)",
+       y = "Body Mass (g)")
 ```
 It looks like there is a strong positive correlation between body mass and flipper length
 - Let's add some variables from the dataset

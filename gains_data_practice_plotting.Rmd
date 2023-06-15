@@ -1,0 +1,30 @@
+---
+title: "gains_data_practice_plotting"
+output: html_document
+date: "2023-06-09"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(here)# allows us to cut out long file paths (ex. "users/connor/dowloads/etc")
+library(tidyverse) # allows us to do lots of fundamental data science tasks (ex. read_csv)
+library(ggcorrplot) # allows us to make correlation plots
+library(plotly) # allows us to make ggplot objects interactive
+library(janitor) # allows us to clean the column names of our dataframe
+```
+
+## R Markdown
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+
+```{r}
+gains_data <- read_csv(here("data/nd-gain-data/joined_data/nd-gain-joined.csv"))
+View(gains_data)
+```
+
+
+```{r}
+
+```
+
+
